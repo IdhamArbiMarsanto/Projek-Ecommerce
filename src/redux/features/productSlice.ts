@@ -3,10 +3,10 @@ import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 
 const initialState: IProduct = {
     _id: "",
-    imgScr: "",
+    imgSrc: "",
     fileKey: "",
     name: "",
-    price: "",
+    price: 0,
     category: "",
 }
 

@@ -2,25 +2,25 @@ import Product from "@/libs/models/Products";
 import { connectMongoDB } from "@/libs/MongoConnect";
 import { NextRequest, NextResponse } from "next/server";
 
-interface URLParams {
-  params: {
-    id: string; 
-  };
-}
-
-export async function PUT(request: NextRequest, URLParams: URLParams) {
+export async function PUT(request: NextRequest) {
     try {
         const body = await request.json();
-        const id = URLParams.params.id;
+        const id = request.nextUrl.pathname.split("/").pop();  
         const { name, category, price } = body;
+
+        
+        if (!id) {
+            return NextResponse.json({ msg: "Product ID is required" }, { status: 400 });
+        }
 
         await connectMongoDB();
 
+        
         console.log(id, name, category, price);
 
         const data = await Product.findByIdAndUpdate(id, {
-            name, 
-            category, 
+            name,
+            category,
             price,
         });
 
@@ -28,9 +28,9 @@ export async function PUT(request: NextRequest, URLParams: URLParams) {
     } catch (error) {
         return NextResponse.json(
             {
-                error,
+                error: error instanceof Error ? error.message : "Something Went Wrong",
                 msg: "Something Went Wrong"
-            }, 
+            },
             { status: 400 }
         );
     }
