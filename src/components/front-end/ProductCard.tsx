@@ -1,6 +1,7 @@
 import { addToCart } from "@/redux/features/cartSlice";
 import { useAppDispatch } from "@/redux/hook";
 import { makeToast } from "@/utils/helper";
+import Image from "next/image";
 import { AiFillStar, AiOutlineShoppingCart, AiOutlineStar } from "react-icons/ai";
 
 
@@ -31,7 +32,13 @@ const ProductCard = ({ id, img, category, title, price }: propsType) => {
     return (
         <div className="border border-gray-200">
             <div className="text-center border-b border-gray-200">
-                <img src={img} alt={title} className="inline-block" />
+            <Image
+  src={img} 
+  alt={title} 
+  className="inline-block"
+  width={500} 
+  height={300} 
+/>
             </div>
 
             <div className="px-8 py-4">

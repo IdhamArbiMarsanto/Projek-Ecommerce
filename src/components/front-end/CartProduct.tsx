@@ -1,5 +1,6 @@
 import { removeFromCart } from "@/redux/features/cartSlice";
 import { useAppDispatch } from "@/redux/hook";
+import Image from "next/image";
 import { RxCross1 } from "react-icons/rx";
 
 interface propsType {
@@ -22,7 +23,13 @@ const CartProduct: React.FC<propsType> = ({
   return (
     <div className="flex justify-between items-center">
       <div className="flex items-center gap-4">
-        <img className="h-[80px]" src={img} alt={title} />
+      <Image 
+  className="h-[80px]" 
+  src={img} 
+  alt={title} 
+  width={80} // Tentukan lebar gambar
+  height={80} // Tentukan tinggi gambar
+/>
         <div className="space-y-2">
           <h3 className="font-medium">{title}</h3>
           <p className="text-gray-600 text-[14px]">

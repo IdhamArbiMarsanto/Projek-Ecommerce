@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 const Hero = () => {
     return (
         <div className="bg-[#E3EDF6] mt-4">
@@ -20,7 +22,13 @@ const Hero = () => {
                     </div>
                 </div>
                 <div className="ml-auto">
-                <img src="/hero.jpg" alt="hero" className="w-full h-[300px] object-cover" />
+                <Image
+  src="/hero.jpg"
+  alt="hero"
+  className="w-full h-[300px] object-cover"
+  width={1920} // Tentukan lebar gambar
+  height={300} // Tentukan tinggi gambar
+/>
                 </div>
             </div>
         </div>
